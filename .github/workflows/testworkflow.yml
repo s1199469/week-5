@@ -1,4 +1,6 @@
+
 name: Terraform Deployment
+f# This is a basic workflow to help you get started with Actions
 
 on:
   push:
@@ -9,6 +11,11 @@ jobs:
   terraform:
     name: Terraform Apply
     runs-on: week5runner  # Specify the self-hosted runner
+=======
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: self-hosted
 
     steps:
     - name: Checkout code
