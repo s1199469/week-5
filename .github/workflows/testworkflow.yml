@@ -8,7 +8,7 @@ on:
       - main  # Change this to your main branch name
 jobs:
   run-playbooks:
-    runs on: self-hosted
+    runs-on: self-hosted
     steps:
       - name: Run Ansible Playbook
         run: ansible-playbook -i inventory.ini day2operations.yml
