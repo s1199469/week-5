@@ -8,28 +8,10 @@ on:
       - main  # Change this to your main branch name
 
 jobs:
-  terraform:
-    name: Terraform Apply
-    runs-on: week5runner  # Specify the self-hosted runner
-  # This workflow contains a single job called "build"
-  build:
-    # The type of runner that the job will run on
-    runs-on: self-hosted
-
+  run-playbooks:
+   runs on: self-hosted
+    
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
-
-    - name: Setup Terraform
-      uses: hashicorp/setup-terraform@v2
-      with:
-        terraform_version: 1.0.0  # Specify the Terraform version you want to use
-
-    - name: Terraform Init
-      run: terraform init
-
-    - name: Terraform Plan
-      run: terraform plan
-
-    - name: Terraform Apply
-      run: terraform apply -auto-approve
+      - name: Run Ansible Playbook
+        uses: actions/checkout@v3
+        run: ansible-playbook -i inventory.ini day2operations.yml
