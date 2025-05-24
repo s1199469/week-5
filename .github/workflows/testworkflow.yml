@@ -16,4 +16,4 @@ jobs:
        
       - name: Run Ansible Playbook
         run: |
-          uptime
+          ansible-playbook install_apache.yml -i localhost, --connection=local
