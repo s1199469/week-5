@@ -1,0 +1,14 @@
+
+name: Terraform Deployment
+# This is a basic workflow to help you get started with Actions
+
+on:
+  push:
+    branches:
+      - main  # Change this to your main branch name
+jobs:
+  run-playbooks:
+    runs-on: self-hosted
+    steps:
+      - name: Run Ansible Playbook
+        run: ansible-playbook -i ~/terraform/sandbox/inventory.ini ~/terraform/sandbox/day2operations.yml --check
