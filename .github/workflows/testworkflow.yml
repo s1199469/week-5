@@ -16,4 +16,4 @@ jobs:
        
       - name: Run Ansible Playbook
         run: |
-          sudo apt-get update
+          uptime
