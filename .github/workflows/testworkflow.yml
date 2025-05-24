@@ -16,4 +16,4 @@ jobs:
        
       - name: Run Ansible Playbook
         run: |
-          ansible-playbook -i inventory.ini install_apache.yml
+          ansible-playbook install_apache.yml -i localhost --connection=local
