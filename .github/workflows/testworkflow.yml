@@ -11,4 +11,4 @@ jobs:
     runs-on: self-hosted
     steps:
       - name: Run Ansible Playbook
-        run: ansible-playbook /home/student/terraform/week-5/install_apache.yml
+        run: ansible-playbook -i /home/student/terraform/week-5/inventory.ini /home/student/terraform/week-5/install_apache.yml
