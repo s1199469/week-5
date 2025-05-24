@@ -9,6 +9,11 @@ on:
 jobs:
   run-playbooks:
     runs-on: self-hosted
+    
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+       
       - name: Run Ansible Playbook
-        run: ansible-playbook -i /home/student/terraform/week-5/inventory.ini /home/student/terraform/week-5/install_apache.yml
+        run: |
+          ansible-playbook -i inventory.ini install_apache.yml
