@@ -1,0 +1,20 @@
+- name: day 2 operations
+  hosts: all
+  become: yes
+  tasks:
+    - name: install php
+      include_role:
+        name: php
+      when: group_names|intersect(['webservers'])
+    - name: install s1199469.apache
+      include_role:
+        name: s1199469.apache
+      when: group_names|intersect(['webservers'])
+    - name: install php-mysql
+      include_role:
+        name: php-mysql
+      when: group_names|intersect(['webservers'])
+    - name: install mysql
+      include_role:
+        name: mysql
+      when: group_names|intersect(['databaseservers'])
