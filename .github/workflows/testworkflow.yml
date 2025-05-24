@@ -1,5 +1,5 @@
 
-name: Terraform Deployment
+name: ansible Deployment
 
 on:
   push:
@@ -8,11 +8,10 @@ on:
 jobs:
   run-playbooks:
     runs-on: self-hosted
-    
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
        
       - name: Run Ansible Playbook
         run: |
-          ansible-playbook install_apache.yml -i localhost, --connection=local
+          echo "Workspace is: $GITHUB_WORKSPACE"
+          ls -la $GITHUB_WORKSPACE
