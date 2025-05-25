@@ -1,0 +1,15 @@
+# test simpel ansible workflow
+name: ansible Deployment
+on:
+  workflow_dispatch:
+    
+jobs:
+  run-playbooks:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v3
+       
+      - name: run terraform removal (test)
+        run: |
+          terraform destroy -auto-approve
+      
