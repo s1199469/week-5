@@ -14,7 +14,7 @@ jobs:
         run: |
           terraform init
           terraform plan
-          terraform deploy -auto-approve
+          terraform apply -auto-approve
       - name: Run Ansible Playbook
         run: |
           ansible-playbook -i inventory.ini day2operations.yml
