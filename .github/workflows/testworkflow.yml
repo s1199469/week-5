@@ -1,6 +1,5 @@
 
 name: ansible Deployment
-# test
 on:
   push:
     branches:
