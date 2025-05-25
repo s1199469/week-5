@@ -23,12 +23,8 @@ jobs:
       - name: Run Ansible Playbook day2operations
         run: |
           ansible-playbook -i inventory.ini day2operations.yml
-<<<<<<< HEAD
           
       - name: Test read IP addresses
-=======
-      - name: Get IP4 addresses
->>>>>>> f75e4a4493cea3321fae8ec476335567978b14e8
         run: |
           {% for host in groups['webservers'] %}
             {{ hostvars[host]['ansible_facts']['eth0']['ipv4']['address'] }}
