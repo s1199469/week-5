@@ -18,15 +18,14 @@ jobs:
           
       - name: check Ansible Playbook syntax
         run: |
-          ansible-lint day2operations.yml
+          ansible-lint --force-color --parseable-severities day2operations.yml
           
       - name: Run Ansible Playbook day2operations
         run: |
           ansible-playbook -i inventory.ini day2operations.yml
-      - name: Test website ansible-lint --force-color --parseable-severities
- 
+      - name: Get IP4 addresses
         run: |
-          {% for host in groups['app_servers'] %}
+          {% for host in groups['webservers'] %}
             {{ hostvars[host]['ansible_facts']['eth0']['ipv4']['address'] }}
           {% endfor %}
           # curl http://192.168.1.74
