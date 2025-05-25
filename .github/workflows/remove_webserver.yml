@@ -1,5 +1,5 @@
 # test simpel ansible workflow
-name: ansible Deployment
+name: ansible removal
 on:
   workflow_dispatch:
     
