@@ -1,0 +1,11 @@
+- name: Update package cache
+      shell: apt-get update
+      args:
+        warn: false
+
+    - name: Install apache2 via shell
+      shell: apt-get install -y apache2
+      args:
+        warn: false
+      register: install_apache
+      changed_when: "'newly installed' in install_apache.stdout or 'Setting up apache2' in install_apache.stdout"

@@ -1,0 +1,12 @@
+#SPDX-License-Identifier: MIT-0
+# tasks file for webserver
+
+- name: update apt-get repo and cache
+  # updaten van apt-get repo en cache op alle servers
+  apt: update_cache=yes force_apt_get=yes cache_valid_time=3600
+- name: install ngnix
+  apt:
+    name: nginx
+    state: latest
+  notify:
+    - start_nginx

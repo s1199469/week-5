@@ -1,0 +1,55 @@
+---
+# WEEK 5 OEFENING 1
+
+- name: Install Apache2 without apt module
+  hosts: webservers
+  become: yes
+  
+  vars:
+    package: apache2
+  tasks:
+
+    - name: Update package cache
+      shell: apt-get update
+      
+    - name: show failure
+      fail:
+        msg: "installatie is mislukt, controleer de packagenaam in het playbook!"
+      when: package != "apache2"
+      
+    - name: Install {{ package }} via shell
+      shell: apt-get install -y {{ package }}
+      register: install_software
+      changed_when: "'ok:' in install_software.stdout or 'Setting up {{ package }}' in install_software.stdout"
+    
+          
+    - name: show setup result
+      debug:
+        var: install_software
+ 
+
+    - name: Ensure Apache2 is running
+      service:
+        name: apache2
+        state: started
+        enabled: yes
+        
+  #  demo met foutmelding:
+         
+    - name: Install apache22 via shell
+      shell: apt-get install -y apache22
+      ignore_errors: true
+      register: install_apache22
+      changed_when: "'ok:' in install_apache22.stdout or 'Setting up Apache22' in install_apache22.stdout"  
+     
+    - name: show setup result2
+      debug:
+        var: install_apache22
+      
+      # failure wordt niet afgevangen, ondanks de criteria
+    - name: show failure2
+      fail:
+        msg: "installatie kan niet worden uitgevoerd, controleer de packagenaam in het playbook!"
+      when: "'false' in install_apache22.stdout"
+
+# https://chatgpt.com/share/6831ac62-6a18-8011-83eb-1d315701719d

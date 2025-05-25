@@ -1,8 +1,5 @@
-# week-5
-## github actions met sef-hosted runner
+# week-4
+## rollen voor apache, mysql en php
 -----------------------------------------
-# issues
-## workflow failed zonder duidelijke foutmelding
-de checkout kloont de repo naar de map run.sh
-verwijder deze map en probeer opnieuw
-
+# 2 servers, 1x web en 1x databaseserver
+## upload naar Ansible Galaxy

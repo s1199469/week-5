@@ -1,0 +1,19 @@
+- name: configure-apache
+  file:
+    path: "/var/www/{{ http_host }}" #create this folder in node
+    state: directory
+    owner: ansible
+    group: ansible
+    mode: '0755'
+- name: set up virtualhost
+  template:
+    src: "templates/apacheconf.j2"
+    dest: "/etc/apache2/sites-available/{{ http_conf }}"
+- name: enable site
+  command: a2ensite {{ http_conf }}
+  notify: restart-apache
+- name: "UFW Firewall allow HTTP on port {{ http_port }}"
+  ufw:
+    rule: allow
+    port: "{{ http_port }}"
+    proto: tcp

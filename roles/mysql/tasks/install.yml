@@ -1,0 +1,22 @@
+# https://www.geeksforgeeks.org/how-to-install-mysql-using-ansible-playbook/
+- name: update apt-get repo and cache
+  # updaten van apt-get repo en cache
+
+  apt: update_cache=yes force_apt_get=yes cache_valid_time=3600
+- name: install MySQL
+  apt:
+    name: mysql-server
+    state: present
+  notify:
+    - check-mysql-service
+    - update-root-password
+- name: install mysql-client
+  apt:
+    name: mysql-client
+    state: present
+- name: install PythonMysql
+  # nodig om mysql beheer te kunnen doen
+
+  apt:
+    name: python3-pymysql,python3-mysqldb
+    state: present

@@ -1,0 +1,11 @@
+- name: add-database-user
+  # voegt gebruiker toe aan MySQL
+
+  # mysql_user: methode werkt niet, er verschijnt een foutmelding
+  # user info staat in vars/main.yml
+  community.mysql.mysql_user:
+    name: "{{ mysqluser }}"
+    password: "{{ mysqlpwd }}"
+    priv: '*.*:ALL'
+    state: present
+    login_unix_socket: /var/run/mysqld/mysqld.sock

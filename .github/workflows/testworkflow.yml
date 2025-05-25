@@ -10,6 +10,11 @@ jobs:
     steps:
       - uses: actions/checkout@v3
        
+      - name: run terraform Deployment (test)
+        run: |
+          terraform init
+          terraform plan
+          terraform deploy -auto-approve
       - name: Run Ansible Playbook
         run: |
-          ansible-playbook -i inventory.ini install_apache.yml
+          ansible-playbook -i inventory.ini day2operations.yml

@@ -1,0 +1,12 @@
+- name: update apt-get repo and cache
+  # updaten van apt-get repo en cache
+
+  apt: update_cache=yes force_apt_get=yes cache_valid_time=3600
+- name: install-php-mysql
+  apt:
+    name:
+      - php-cgi
+      - php-mysql
+      - php-cli
+    state: present
+  # https://documentation.ubuntu.com/server/how-to/web-services/install-php/index.html

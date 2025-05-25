@@ -1,0 +1,4 @@
+#SPDX-License-Identifier: MIT-0
+# vars file for apache
+http_host: week4.local
+http_conf: week4.local.conf

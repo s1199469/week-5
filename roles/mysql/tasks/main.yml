@@ -1,0 +1,4 @@
+#SPDX-License-Identifier: MIT-0
+# tasks file for mysql
+- import_tasks: install.yml
+- import_tasks: add-database-user.yml

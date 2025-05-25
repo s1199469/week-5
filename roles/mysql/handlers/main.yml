@@ -1,0 +1,18 @@
+#SPDX-License-Identifier: MIT-0
+# handlers file for mysql
+- name: check-mysql-service
+  service:
+    name: mysql
+    state: started
+    enabled: yes
+- name: restart-mysqlserver
+  service:
+    name: mysql-server
+    state: restarted
+- name: update-root-password
+  mysql_user:
+    name: root
+    host: localhost
+    password: "{{ mysql_root_password }}"
+    check_implicit_admin: yes
+    priv: "*.*:ALL_GRANT"

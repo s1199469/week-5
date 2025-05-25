@@ -1,0 +1,18 @@
+#SPDX-License-Identifier: MIT-0
+# handlers file for apache
+- name: start-apache-service
+  service:
+    name: apache2
+    state: started
+- name: restart-apache
+  service:
+    name: apache2
+    state: restarted
+- name: add-testsite-to-hosts
+  ansible.builtin.blockinfile:
+    path: /etc/hosts
+    block: |
+      {{ item.ip }} {{ item.name }}
+    marker: "# (mark) ANSIBLE MANAGED BLOCK {{ item.name }}"
+    loop:
+      - {name: week4.local, ip: 127.0.0.1}

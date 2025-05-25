@@ -1,0 +1,9 @@
+# https://docs.ansible.com/ansible/latest/collections/ansible/builtin/blockinfile_module.html#examples
+- name: add entry to hosts
+  ansible.builtin.blockinfile:
+    path: /etc/hosts
+    block: |
+      {{ item.ip }} {{ item.name }}
+    marker: "# (mark) ANSIBLE MANAGED BLOCK {{ item.name }}"
+  loop:
+    - {name: esweek4.local, ip: 127.0.0.1}

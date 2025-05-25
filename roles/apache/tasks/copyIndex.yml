@@ -1,0 +1,6 @@
+- name: Copy Index
+  template:
+    src: "files/index.html" #this index.html must be at files location
+    dest: "/var/www/{{ http_host }}/index.html"
+
+# dest: "/var/www/html/index.html"

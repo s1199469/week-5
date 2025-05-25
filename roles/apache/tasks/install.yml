@@ -1,0 +1,10 @@
+- name: update apt-get repo and cache
+  # updaten van apt-get repo en cache
+
+  apt: update_cache=yes force_apt_get=yes cache_valid_time=3600
+- name: install Apache (latest)
+  apt:
+    name: apache2
+    state: present
+  notify:
+    - start-apache-service

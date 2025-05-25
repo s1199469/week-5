@@ -1,0 +1,12 @@
+- name: update apt-get repo and cache
+  # updaten van apt-get repo en cache
+
+  apt: update_cache=yes force_apt_get=yes cache_valid_time=3600
+- name: install-php
+  apt:
+    name:
+      - php
+      - libapache2-mod-php
+      - php-cli
+    state: present
+  # https://documentation.ubuntu.com/server/how-to/web-services/install-php/index.html
