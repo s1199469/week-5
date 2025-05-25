@@ -1,5 +1,5 @@
-# test simpel ansible workflow
-name: ansible removal
+# test simpel terraform destry workflow
+name: terraform removal
 on:
   workflow_dispatch:
     
@@ -11,5 +11,6 @@ jobs:
        
       - name: run terraform removal (test)
         run: |
+          terraform init
           terraform destroy -auto-approve
       
