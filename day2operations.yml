@@ -1,6 +1,8 @@
 - name: day 2 operations
   hosts: all
   become: yes
+  vars:
+    ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
   tasks:
     - name: install php
       include_role:
