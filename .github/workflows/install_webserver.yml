@@ -18,7 +18,7 @@ jobs:
           
       - name: check Ansible Playbook syntax
         run: |
-          ansible-lint --force-color --parseable-severities day2operations.yml
+          ansible-lint --force-color day2operations.yml
           
       - name: Run Ansible Playbook day2operations
         run: |
