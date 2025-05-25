@@ -18,3 +18,6 @@ jobs:
       - name: Run Ansible Playbook
         run: |
           ansible-playbook -i inventory.ini day2operations.yml
+      - name: Test website 
+        run: |
+        curl http//192.168.1.74
