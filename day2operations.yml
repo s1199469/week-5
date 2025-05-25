@@ -10,7 +10,7 @@
       when: group_names|intersect(['webservers'])
     - name: install s1199469.apache
       include_role:
-        name: s1199469.apache
+        name: apache
       when: group_names|intersect(['webservers'])
     - name: install php-mysql
       include_role:
