@@ -15,3 +15,7 @@ jobs:
     uses: ansible/ansible-content-actions/.github/workflows/ansible_lint.yaml@main
     with:
       args: '-p playbooks'
+      
+  - name: check Ansible Playbook syntax
+        run: |
+          ansible-lint --force-color day2operations.yml
