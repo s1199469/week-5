@@ -1,5 +1,5 @@
-# week-4
-## rollen voor apache, mysql en php
+# week-5
+## deployment met Github Actions
 -----------------------------------------
-# 2 servers, 1x web en 1x databaseserver
-## upload naar Ansible Galaxy
+# 1 webserver
+gebruik gemaakt van eerder gemaakte deployments
