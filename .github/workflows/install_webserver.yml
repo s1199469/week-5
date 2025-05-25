@@ -1,5 +1,5 @@
 # test simpel ansible workflow
-name: ansible Deployment
+name: VM Deployment with terraform and ansible
 on:
   push:
     branches:
@@ -20,9 +20,12 @@ jobs:
         run: |
           ansible-lint day2operations.yml
           
-      - name: Run Ansible Playbook
+      - name: Run Ansible Playbook day2operations
         run: |
           ansible-playbook -i inventory.ini day2operations.yml
       - name: Test website 
         run: |
-          curl http://192.168.1.74
+          {% for host in groups['app_servers'] %}
+            {{ hostvars[host]['ansible_facts']['eth0']['ipv4']['address'] }}
+          {% endfor %}
+          # curl http://192.168.1.74
