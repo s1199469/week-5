@@ -15,6 +15,11 @@ jobs:
           terraform init
           terraform plan
           terraform apply -auto-approve
+          
+      - name: check Ansible Playbook syntax
+        run: |
+          ansible-lint day2operations.yml
+          
       - name: Run Ansible Playbook
         run: |
           ansible-playbook -i inventory.ini day2operations.yml
