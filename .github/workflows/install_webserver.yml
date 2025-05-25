@@ -23,7 +23,8 @@ jobs:
       - name: Run Ansible Playbook day2operations
         run: |
           ansible-playbook -i inventory.ini day2operations.yml
-      - name: Test website 
+      - name: Test website ansible-lint --force-color --parseable-severities
+ 
         run: |
           {% for host in groups['app_servers'] %}
             {{ hostvars[host]['ansible_facts']['eth0']['ipv4']['address'] }}
