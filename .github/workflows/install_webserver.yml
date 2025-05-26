@@ -2,7 +2,7 @@ name: VM Deployment with terraform and ansible
 on:
   push:
     paths:
-      - '**.tf'main  # runs only when terraform file is changed
+      - '**.tf'  # runs only when terraform file is changed
 jobs:
   install-webserver:
     runs-on: self-hosted
