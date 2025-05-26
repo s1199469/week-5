@@ -1,9 +1,8 @@
-# test simpel ansible workflow
 name: VM Deployment with terraform and ansible
 on:
   push:
-    branches:
-      - main  # Change this to your main branch name
+    paths:
+      - '**.tf'main  # runs only when terraform file is changed
 jobs:
   install-webserver:
     runs-on: self-hosted
@@ -20,9 +19,6 @@ jobs:
         run: |
           ansible-playbook -i inventory.ini day2operations.yml
           
-      - name: Test read IP addresses
-        run: |
-          {% for host in groups['webservers'] %}
-            {{ hostvars[host]['ansible_facts']['eth0']['ipv4']['address'] }}
-          {% endfor %}
+      
           
+      
