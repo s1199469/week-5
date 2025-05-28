@@ -8,13 +8,13 @@ jobs:
     runs-on: self-hosted
     steps:
       - uses: actions/checkout@v3
-      - name: check Terraform syntax
-        run: |
-          terraform validate
-          terraform fmt
+      
       - name: run terraform Deployment (test)
         run: |
           terraform init
+          # check terraform syntax. Deze stap staat hier omdat de provider aanwezig moet zijn (in de init fase)
+          terraform validate
+          terraform fmt
           terraform plan
           terraform apply -auto-approve
                  
