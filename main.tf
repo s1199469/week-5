@@ -1,4 +1,6 @@
-# Details voor de provider
+ # versie 1.0
+ # pas de versie aan om de Github workflow te activeren
+ # Details voor de provider
 provider "esxi" {
   esxi_hostname      = var.esxi_hostname
   esxi_hostport      = var.esxi_hostport
@@ -7,8 +9,8 @@ provider "esxi" {
   esxi_password      = var.esxi_password
 }
 
-#    template_file is a great way to pass variables to
-#    cloud-init
+ #    template_file is a great way to pass variables to
+ #    cloud-init
 data "template_file" "Server1" {
   template = file(var.vm1_userconfigfile)
   vars = {
@@ -20,7 +22,7 @@ data "template_file" "Server1" {
 }
 
 
-# VM 1
+ # VM 1
 resource "esxi_guest" "Server1" {
   guest_name         = var.vm1_hostname
   disk_store         = var.disk_store
@@ -40,18 +42,16 @@ ovf_source = "https://cloud-images.ubuntu.com/releases/24.04/release/ubuntu-24.0
    "userdata"          = base64gzip(data.template_file.Server1.rendered)
   }
 }
-#
-#  Outputs are a great way to output information about your apply.
-#
+ #
+ #  Outputs are a great way to output information about your apply.
 
-
-# wegschrijven IP adressen in file en aanmaken inventory file
-# van iedere server moet de output handmatig worden toegevoegd aan de array
+ # wegschrijven IP adressen in file en aanmaken inventory file
+ # van iedere server moet de output handmatig worden toegevoegd aan de array
 
 locals {
   web_ips=[esxi_guest.Server1[0].ip_address]
 }
-# aanmaken inventory file
+ # aanmaken inventory file
 resource "local_file" "ipaddresses" {
    content = <<-EOT
    [${var.vm1_group}]
@@ -70,11 +70,11 @@ resource "local_file" "ipaddresses" {
 
    filename = "${path.module}/inventory.ini"
 }
-#  Outputs are a great way to output information about your apply.
-#
+ #  Outputs are a great way to output information about your apply.
+ #
 
-# output bij gebruik van count kan charmanter, nog niet gevonden 
-# hoe dat met een for loop zou kunnen
+ # output bij gebruik van count kan charmanter, nog niet gevonden 
+ # hoe dat met een for loop zou kunnen
 output "ip1" {
   value = esxi_guest.Server1[0].ip_address
 }
