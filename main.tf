@@ -1,4 +1,4 @@
- # versie 1.7
+ # versie 1.75
  # pas de versie aan om de Github workflow te activeren
  # Details voor de provider
 provider "esxi" {
