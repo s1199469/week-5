@@ -1,4 +1,4 @@
-- name: Update package cache
+    - name: Update package cache
       shell: apt-get update
       args:
         warn: false
