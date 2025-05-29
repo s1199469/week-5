@@ -23,14 +23,34 @@ gebruik gemaakt van eerder gemaakte deployments
 
 -------------
 ##Issues
+*Geen issues*
 
 ----
 
 ##status
-
+De workflow wordt succesvol uitgevoerd.
+ 
 ----
+
+
 ##Opdracht 3
 - Rol een eenvoudige VM uit met Terraform en een workflow
 - De terraform code wordt gecontroleerd op best practices
 - Configureer de workflow zodanig dat de workflow wordt uitgevoerd als een terraform bestand wijzigt
 - Maak een workflow die de VM verijderd (op verzoek)
+
+----
+##Issues
+
+----
+##status
+
+----
+
+De code check bestaat uit de commando's: **terraform validate** en **terraform fmt**
+
+zie: https://developer.hashicorp.com/terraform/cli/commands/validate
+
+https://developer.hashicorp.com/terraform/cli/commands/fmt
+
+**terraform fmt ** past de inhoud van de files aan zodat deze aan de best practices voldoen
