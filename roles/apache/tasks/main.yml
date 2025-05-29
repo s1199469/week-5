@@ -1,5 +1,5 @@
 #SPDX-License-Identifier: MIT-0
-- import_tasks: install.yml
+- import_tasks: install_using_shell.yml
   # tasks file for apache
   # bron: https://medium.com/@anilbidary/install-and-configure-apache-using-ansible-role-galaxy-94a18225b60d
 - import_tasks: configure.yml
