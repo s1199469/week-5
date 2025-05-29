@@ -1,4 +1,4 @@
- # versie 1.2
+ # versie 1.3
  # pas de versie aan om de Github workflow te activeren
  # Details voor de provider
 provider "esxi" {
